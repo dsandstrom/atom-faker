@@ -24,9 +24,7 @@ Insert fake data using a subset of what's available in the
   - domainName
   - domainWord
   - ip
-  - color
 - Company:
-  - suffixes
   - companyName
   - companySuffix
   - catchPhrase
@@ -34,7 +32,6 @@ Insert fake data using a subset of what's available in the
 - Image:
   - imageUrl
 - Lorem:
-  - words
   - sentence
   - sentences
   - paragraph
