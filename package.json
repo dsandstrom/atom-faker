@@ -1,7 +1,7 @@
 {
   "name": "atom-faker",
   "main": "./lib/atom-faker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate fake data using faker.js",
   "repository": "https://github.com/manuclementz/atom-faker",
   "author": "Manu Clementz <manu@clementz.io> (http://clementz.io)",
