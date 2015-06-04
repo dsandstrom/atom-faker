@@ -1,4 +1,5 @@
 faker = require "faker"
+{CompositeDisposable} = require 'atom'
 
 availableCommands =
   Name:
@@ -36,15 +37,21 @@ availableCommands =
 
 
 module.exports =
+  subscriptions: null
+
   activate: (state) ->
+    @subscriptions = new CompositeDisposable
+
     for cls of availableCommands
       for cmd of availableCommands[cls]
-        createCmd(cls, cmd)
+        @subscriptions.add(createCmd(cls, cmd))
 
+  deactivate: ->
+    @subscriptions.dispose()
 
 createCmd = (cls, cmd) ->
-  atom.workspaceView.command "atom-faker:(#{cls})-#{cmd}", ->
-    editor = atom.workspace.getActiveEditor()
+  atom.commands.add "atom-workspace", "atom-faker:(#{cls})-#{cmd}", ->
+    editor = atom.workspace.getActiveTextEditor()
     return unless editor?
     fn = availableCommands[cls][cmd]
     editor.insertText faker[cls][fn]()
